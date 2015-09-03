@@ -1,4 +1,4 @@
-package Proyecto0;
+package src.Proyecto0;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -9,16 +9,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.Random;
-
-import javax.swing.UIManager;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 /**
  * Interfaz grafica que muestra un boton con la imagen de Bart Simpson que al hacer click sobre él se escribe una frase tipica de él al lado de dicho boto.
  * @author Pablo Lencina
@@ -73,7 +67,7 @@ public class GUISimpson extends JFrame
 	   //Creación del bartButton.
 	   bartButton = new JButton();
 	   bartButton.setForeground(new Color(0, 0, 0));
-	   bartButton.setIcon(new ImageIcon(GUISimpson.class.getResource("/Imagen/Bart.jpg")));
+	   bartButton.setIcon(new ImageIcon(GUISimpson.class.getResource("/src/Imagen/Bart.jpg")));
 	   bartButton.setBackground(new Color(255, 255, 255));
 	   bartButton.addActionListener(new OyenteBart());
 	   contentPane.add(bartButton, BorderLayout.WEST);
