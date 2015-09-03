@@ -1,4 +1,4 @@
-package src.Proyecto0;
+package Proyecto0;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -67,7 +67,7 @@ public class GUISimpson extends JFrame
 	   //Creación del bartButton.
 	   bartButton = new JButton();
 	   bartButton.setForeground(new Color(0, 0, 0));
-	   bartButton.setIcon(new ImageIcon(GUISimpson.class.getResource("/src/Imagen/Bart.jpg")));
+	   bartButton.setIcon(new ImageIcon(GUISimpson.class.getResource("/Imagen/Bart.jpg")));
 	   bartButton.setBackground(new Color(255, 255, 255));
 	   bartButton.addActionListener(new OyenteBart());
 	   contentPane.add(bartButton, BorderLayout.WEST);
