@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /**
  * Clase abstracta que representa a los PowerUps. 

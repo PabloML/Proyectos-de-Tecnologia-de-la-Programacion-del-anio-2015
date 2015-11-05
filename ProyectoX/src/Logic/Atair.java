@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** */
 public class Atair extends Enemy

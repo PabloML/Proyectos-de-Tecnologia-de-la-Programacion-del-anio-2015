@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** 
  * Clase que representa la bomba que tiene el personaje.

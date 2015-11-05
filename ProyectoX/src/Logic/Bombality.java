@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** 
  * Clase que representa los PowerUps del tipo Bombality.
@@ -17,6 +17,7 @@ public class Bombality extends PowerUp
      */
     public void operate()
       {Bomberman p=(Bomberman)game.getPlayer();
+       p.incrementScore(35);
        p.setCantBombCanPut(1);
       }
 }

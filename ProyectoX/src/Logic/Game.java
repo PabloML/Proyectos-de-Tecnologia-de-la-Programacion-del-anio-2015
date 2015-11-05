@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** 
  * Clase que reperesenta el control logico del juego.

@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** 
  * Clase que representa los PowerUps del tipo Masacrality.
@@ -17,6 +17,7 @@ public class Masacrality extends PowerUp
      */
     public void operate()
       {Bomberman p=(Bomberman)game.getPlayer();
+       p.incrementScore(50);
        p.setPass(true);
        try {PowerUp.sleep(5000);
 	       }  

@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** 
  * Clase que representa los PowerUps del tipo Fatality.
@@ -17,6 +17,7 @@ public class Fatality extends PowerUp
      */
     public void operate()
       {Player p=game.getPlayer();
+       p.incrementScore(35);
        Weapon w=p.getWeapons().getFirst();
        int power=w.getPower();
         w.setPower(2*power);

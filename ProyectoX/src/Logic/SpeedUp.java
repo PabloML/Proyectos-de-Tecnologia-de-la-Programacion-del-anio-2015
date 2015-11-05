@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** 
  * Clase que representa los PowerUps del tipo SpeedUp.
@@ -17,6 +17,7 @@ public class SpeedUp extends PowerUp
      */
     public void operate()
     {Player p=game.getPlayer();
+     p.incrementScore(30);
      int s=p.getSpeed();
      p.setSpeed(2*s);
     }

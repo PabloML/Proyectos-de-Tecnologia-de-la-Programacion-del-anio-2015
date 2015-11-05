@@ -1,4 +1,4 @@
-package Logica;
+package Logic;
 
 /** */
 public class Rugulo extends Enemy
