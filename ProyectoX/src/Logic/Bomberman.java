@@ -1,6 +1,6 @@
 package Logic;
 
-import Graphics.GUILevel;
+import Graphics.*;
 
 /** 
  * Clase que representa al Bomberman.
@@ -17,7 +17,44 @@ public class Bomberman extends Player
 	  while (pos<powerUps.length)
 		powerUps[pos]=null;
      }
-   
+   /**
+    * Mueve al jugador en la dirección dada por parámetro.
+    * @param d La direccón a la que se movera el jugador.
+    */
+   private void movePlayer(int d)
+     {Level level=game.getLevel();
+      Cell [][] cells=level.getCells();
+      switch (d)
+        {case 1:{if (cells[positionX][positionY+1]!=null)
+ 	                {positionY++;
+ 	                 guiPlayer.move(d,speed,true);
+ 	                }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+         case 2:{if (cells[positionX][positionY-1]!=null)
+                    {positionY--;
+ 	                 guiPlayer.move(d,speed,true);
+                    }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+         case 3:{if (cells[positionX+1][positionY]!=null)
+                    {positionX++;
+                     guiPlayer.move(d,speed,true);
+                    }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+         case 4:{if (cells[positionX-1][positionY]!=null)
+                    {positionX--;
+                     guiPlayer.move(d,speed,true);
+                    }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+        }
+     }
    /**
     * Contructor del Bomberman.
     * @param n Nombre del jugador que maneja el Bomberman.
@@ -30,7 +67,9 @@ public class Bomberman extends Player
       positionY=1;
       speed=3;
       life=true;
-      weapons.add(new Bomb(this));
+      guiPlayer=new GUIPlayer(game.getLevel().getGUILevel());
+      weapons.addFirst(new Bomb(this));
+      powerUps=new PowerUp[4];
       this.initialicePowerUps();
      }
    /**
@@ -67,47 +106,18 @@ public class Bomberman extends Player
      * Mueve el jugador.
      */
     public void move(int d)
-      {Level level=game.getLevel();
-       Cell [][] cells=level.getCells();
-       GUILevel guiLevel=level.getGUILevel();
-       Enemy [] enemies=level.getEnemies();
-       if (pass)
-          {switch (d)
-             {case 1:{if (cells[positionX][positionY+1]!=null)
-        	             {positionY++;
-        	              guiLevel.movePlayer(d,speed,true);
-        	             }
-                       else guiLevel.movePlayer(d,speed,false);
-                       break;
-                      }
-              case 2:{if (cells[positionX][positionY-1]!=null)
- 	                     {positionY--;
-        	              guiLevel.movePlayer(d,speed,true);
- 	                     }
-                      else guiLevel.movePlayer(d,speed,false);
-                      break;
-                     }
-              case 3:{if (cells[positionX+1][positionY]!=null)
-                         {positionX++;
-	                      guiLevel.movePlayer(d,speed,true);
-                         }
-                      else guiLevel.movePlayer(d,speed,false);
-                      break;
-                     }
-              case 4:{if (cells[positionX-1][positionY]!=null)
-                         {positionX--;
-	                      guiLevel.movePlayer(d,speed,true);
-                         }
-                      else guiLevel.movePlayer(d,speed,false);
-                      break;
-                     }
-             }
-           for (int i=0;i<enemies.length;i++)
-    	     if (positionX==enemies[i].getPosition[0] && positionY==enemies.getPosition[1])
-    	        {life=false;
-    	         guiLevel.killPlayer(score);
-    	        }
+      {if (pass)
+          {this.movePlayer(d);
+           this.checkedEnemies();
+           this.checkedPowerUp();
           }
        else super.move(d);
+      }
+    
+    public void attack()
+      {if (cantBombCanPut!=0) 
+          {Bomb bomb=(Bomb)weapons.getFirst();
+           bomb.exploit();
+          }
       }
   }

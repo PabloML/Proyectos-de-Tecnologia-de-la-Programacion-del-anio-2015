@@ -10,13 +10,75 @@ import Graphics.*;
 public abstract class Player
   {protected String name;// Nombre del jugador
    protected int score;// Puntaje del jugador.
-   protected int positionX;// Posición en el eje x del jugador.
-   protected int positionY;// Posición en el eje y del jugador.
+   protected int positionX;// Posición en el de la fila del jugador.
+   protected int positionY;// Posición en el de la columna del jugador.
    protected int speed;// Velocidad del jugador.
    protected boolean life;// Vida del jugador. 
    protected Game game;//Juego en el que esta el jugador.
    protected LinkedList <Weapon> weapons;// Armas que tiene el jugador.
-   protected PowerUp[] powerUps;
+   protected PowerUp[] powerUps;//PowerUpps que posee el jugador.
+   protected GUIPlayer guiPlayer;//Grafica del jugador.
+   
+   /**
+    * Mueve al jugador en la dirección dada por parametro.
+    * @param d La dirección a la que se movera el jugador.
+    */
+   private void movePlayer(int d)
+     {Level level=game.getLevel();
+      Cell [][] cells=level.getCells();
+      switch (d)
+        {case 1:{if (cells[positionX][positionY+1]!=null && !cells[positionX][positionY+1].haveWall())
+     	            {positionY++;
+     	             guiPlayer.move(d,speed,true);
+     	            }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+         case 2:{if (cells[positionX][positionY-1]!=null && !cells[positionX][positionY-1].haveWall())
+	                {positionY--;
+     	             guiPlayer.move(d,speed,true);
+	                }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+         case 3:{if (cells[positionX+1][positionY]!=null && !cells[positionX+1][positionY].haveWall())
+                    {positionX++;
+	                 guiPlayer.move(d,speed,true);
+                    }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+         case 4:{if (cells[positionX-1][positionY]!=null && !cells[positionX-1][positionY].haveWall())
+                    {positionX--;
+	                 guiPlayer.move(d,speed,true);
+                    }
+                 else guiPlayer.move(d,speed,false);
+                 break;
+                }
+        }
+     }
+   
+   /**
+    * Checkea si a la posición en la que esta el jugador hay algun enemigo y mata al jugador.
+    */
+   protected void checkedEnemies()
+     {Level level=game.getLevel();       
+	  Enemy [] enemies=level.getEnemies();
+	  for (int i=0;i<enemies.length;i++)
+	      if (enemies[i]!=null)
+		     if (positionX==enemies[i].getPosition[0] && positionY==enemies.getPosition[1])
+	            {life=false;
+	             guiPlayer.kill(score);
+	            }
+     }
+   
+   protected void checkedPowerUp()
+     {Level level=game.getLevel();
+      Cell [][] c=level.getCells();
+      PowerUp powerUp=c[positionX][positionY].getPowerUp();
+      if (powerUp!=null)
+         powerUp.operate();
+     }
    
    /**
     * Devuelve el nombre del jugador.
@@ -151,47 +213,9 @@ public abstract class Player
      * Mueve el jugador.
      */
     public void move(int d)
-      {Level level=game.getLevel();
-       Cell [][] cells=level.getCells();
-       GUILevel guiLevel=level.getGUILevel();
-       Enemy [] enemies=level.getEnemies();
-       switch (d)
-         {case 1:{if (cells[positionX][positionY+1]!=null && !cells[positionX][positionY+1].haveWall())
-        	         {positionY++;
-        	          guiLevel.movePlayer(d,speed,true);
-        	         }
-                  else guiLevel.movePlayer(d,speed,false);
-                  break;
-                 }
-          case 2:{if (cells[positionX][positionY-1]!=null && !cells[positionX][positionY-1].haveWall())
- 	                 {positionY--;
-        	          guiLevel.movePlayer(d,speed,true);
- 	                 }
-                  else guiLevel.movePlayer(d,speed,false);
-                  break;
-                 }
-          case 3:{if (cells[positionX+1][positionY]!=null && !cells[positionX+1][positionY].haveWall())
-                     {positionX++;
-	                  guiLevel.movePlayer(d,speed,true);
-                     }
-                  else guiLevel.movePlayer(d,speed,false);
-                  break;
-                 }
-          case 4:{if (cells[positionX-1][positionY]!=null && !cells[positionX-1][positionY].haveWall())
-                     {positionX--;
-	                  guiLevel.movePlayer(d,speed,true);
-                     }
-                  else guiLevel.movePlayer(d,speed,false);
-                  break;
-                 }
-         }
-       for (int i=0;i<enemies.length;i++)
-    	 if (positionX==enemies[i].getPosition[0] && positionY==enemies.getPosition[1])
-    	    {life=false;
-    	     guiLevel.killPlayer(score);
-    	    }
+      {this.movePlayer(d);
+       this.checkedEnemies();
+       this.checkedPowerUp();
       }
-    public void attack()
-      {
-      }
+    public abstract void attack();
   }

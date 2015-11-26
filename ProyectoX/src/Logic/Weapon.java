@@ -1,12 +1,16 @@
 package Logic;
+
+import Graphics.*;
+
 /**
  * Clase abstracta que representa a las armas del jugador.
  */
 public abstract class Weapon extends Thread
   {protected Player player;// Jugador al que le pertenece el arma.
-   protected int positionX;// Posición en el eje x del arma.
-   protected int positionY;// Posición en el eje y del arma.
+   protected int positionX;// Posición en de la fila del arma.
+   protected int positionY;// Posición en de la columna del arma.
    protected int power;// Poder del arma.
+   protected GUIWeapon guiWeapon;//Grafica del arma.
    /**
     * Devuelve el jugador al que pertenece el arma.
     * @return El jugador al que pertenece el arma.

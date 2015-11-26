@@ -448,7 +448,7 @@ destruibles.La esquina superior izquierda y las dos que se encuentran junto a el
 <XPD:ATTR name="Left" type="integer">1044</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">544</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">237</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">160</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">173</XPD:ATTR>
 <XPD:REF name="Model">7MPnMZ1DRkGWGFhPs/nhRQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="fNnpCruXJUqgyNThFdMJQQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="4bhzM2ssnU2MZqneminYYAAA">
@@ -476,7 +476,7 @@ destruibles.La esquina superior izquierda y las dos que se encuentran junto a el
 <XPD:OBJ name="OwnedViews[9]" type="UMLGeneralizationView" guid="AJrvCr8H4kKN9XB47kd6ywAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">1157,544;1153,487</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">1156,544;1152,487</XPD:ATTR>
 <XPD:REF name="Model">9r84m+nOL0yLqtEx7aUoZwAA</XPD:REF>
 <XPD:REF name="Head">Y/Va/HTiFEaJH5USPg//XwAA</XPD:REF>
 <XPD:REF name="Tail">8XqyRRNyZ0u+zimeMR+CCAAA</XPD:REF>
@@ -2849,6 +2849,12 @@ nivel.
 <XPD:OBJ name="Operations[15]" type="UMLOperation" guid="DxOy5B/3E0O9abkIADniWAAA">
 <XPD:ATTR name="Name" type="string">attack</XPD:ATTR>
 <XPD:REF name="Owner">Yr7eHrl3qECEVvhuveh7IQAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="/YTzt5tVMkSt8DADQyW/QQAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">void*</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">DxOy5B/3E0O9abkIADniWAAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 <XPD:ATTR name="#Associations" type="integer">7</XPD:ATTR>
 <XPD:REF name="Associations[0]">9/gxDQnP6U6d2IJjP2loLAAA</XPD:REF>
@@ -2972,7 +2978,7 @@ nivel.
 <XPD:REF name="Views[3]">j3XsXVeJ2UGBjzx6AnGj1QAA</XPD:REF>
 <XPD:ATTR name="#Generalizations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Generalizations[0]">9r84m+nOL0yLqtEx7aUoZwAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">6</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">7</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="tK6nORKQEk6OZINJAf2rlgAA">
 <XPD:ATTR name="Name" type="string">Bomberman</XPD:ATTR>
 <XPD:REF name="Owner">7MPnMZ1DRkGWGFhPs/nhRQAA</XPD:REF>
@@ -3040,6 +3046,16 @@ nivel.
 <XPD:ATTR name="Name" type="string">d</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">z+bnSBCXGUmMK+d8qVG3sgAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[6]" type="UMLOperation" guid="Sz6l5S2a9kaixp3c2I3ZVAAA">
+<XPD:ATTR name="Name" type="string">attack</XPD:ATTR>
+<XPD:REF name="Owner">7MPnMZ1DRkGWGFhPs/nhRQAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="G5Y5fzGZw0CSDCxV2BEQtAAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">void+</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">Sz6l5S2a9kaixp3c2I3ZVAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>

@@ -4,8 +4,8 @@ package Logic;
  * Clase que representa las celdas del juego. 
  */
 public class Cell
-  {protected int positionX;// Posición en el eje x de la celda.
-   protected int positionY;// Posición en el eje y de la celda.
+  {protected int positionX;// Posición de la fila de la celda.
+   protected int positionY;// Posición de la columna de la celda.
    public Level level;// Nivel en el que esta la celda.
    protected boolean haveWall;// Variable que dice si tiene muro destruible la celda.
    protected PowerUp powerUp;// PowerUp que tienen la celda, en el caso de no tener es nulo.

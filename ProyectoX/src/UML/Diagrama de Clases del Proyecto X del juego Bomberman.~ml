@@ -2972,7 +2972,7 @@ nivel.
 <XPD:REF name="Views[3]">j3XsXVeJ2UGBjzx6AnGj1QAA</XPD:REF>
 <XPD:ATTR name="#Generalizations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Generalizations[0]">9r84m+nOL0yLqtEx7aUoZwAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">5</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">6</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="tK6nORKQEk6OZINJAf2rlgAA">
 <XPD:ATTR name="Name" type="string">Bomberman</XPD:ATTR>
 <XPD:REF name="Owner">7MPnMZ1DRkGWGFhPs/nhRQAA</XPD:REF>
@@ -3025,6 +3025,21 @@ nivel.
 <XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="r/gh4ToO0E+9PtraGT+lmwAA">
 <XPD:ATTR name="Name" type="string">int c</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">uhO3adJ5v0GIJqtK/44ZvQAA</XPD:REF>
+</XPD:OBJ>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[5]" type="UMLOperation" guid="z+bnSBCXGUmMK+d8qVG3sgAA">
+<XPD:ATTR name="Name" type="string">move</XPD:ATTR>
+<XPD:REF name="Owner">7MPnMZ1DRkGWGFhPs/nhRQAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="huMvk9RUzUu7nxMmGH9o1wAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">void++</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">z+bnSBCXGUmMK+d8qVG3sgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Parameters[1]" type="UMLParameter" guid="Tg13Vlb+IkW0pRTg7s3BpAAA">
+<XPD:ATTR name="Name" type="string">d</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">z+bnSBCXGUmMK+d8qVG3sgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>

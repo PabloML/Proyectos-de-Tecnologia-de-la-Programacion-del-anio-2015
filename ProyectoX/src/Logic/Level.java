@@ -36,9 +36,8 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new SpeedUp(game));
-    		     s++;
-    		     guiLevel.insertSpeedUp(x, y);
+    		    {cells[x][y].setPowerUp(new SpeedUp(game,x,y));
+    		     s++;    		     
     		    }
     	    }
     	 x++;
@@ -59,9 +58,8 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new Fatality(game));
-    		     f++;
-    		     guiLevel.insertFatality(x, y);
+    		    {cells[x][y].setPowerUp(new Fatality(game,x,y));
+    		     f++;    		     
     		    }
     	    }
     	 x++;
@@ -82,9 +80,8 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new Bombality(game));
-    		     b++;
-    		     guiLevel.insertBombality(x, y);
+    		    {cells[x][y].setPowerUp(new Bombality(game,x,y));
+    		     b++;    		     
     		    }
     	    }
     	 x++;
@@ -105,9 +102,8 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new Masacrality(game));
-    		     m++;
-    		     guiLevel.insertMasacrality(x, y);
+    		    {cells[x][y].setPowerUp(new Masacrality(game,x,y));
+    		     m++;    		     
     		    }
     	    }
     	 x++;
@@ -191,10 +187,8 @@ public class Level
              cells[i][j]=new Cell(this,i,j);
       this.createDetruibleWall();
       this.createPoweUps();
-      guiLevel.insertPlayer();
       guiLevel.insertPassableCells();
-     }
-   
+     }   
     /** 
      * Constructor del nivel.
      * @param g Juego en el que se ejecuta el nivel. 
@@ -202,10 +196,12 @@ public class Level
     public Level(Game g)
       {game=g;
        quantityWall=0;
+       guiLevel = new GUILevel();
        cells=new Cell[15][11];
        this.CreateCells();
        enemies=new Enemy[6];
        this.CreateEnemies();
+       guiLevel.setVisible(true);	
       }
     
     /** 
