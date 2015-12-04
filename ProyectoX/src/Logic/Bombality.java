@@ -1,5 +1,7 @@
 package Logic;
 
+import Graphics.GUIPowerUp;
+
 /** 
  * Clase que representa los PowerUps del tipo Bombality.
  */
@@ -8,8 +10,9 @@ public class Bombality extends PowerUp
     * Constructor del PowerUp del tio Bombality.
     * @param g Juego en el que esta el PowerUp.
     */
-    public Bombality(Game g,int x,int y)
+    public Bombality(Game g,Level l,int x,int y)
     {game=g;
+     guiPowerUp=new GUIPowerUp(l.getGUILevel());
      guiPowerUp.insertBombality(x, y);
     }
     

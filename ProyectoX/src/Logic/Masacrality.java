@@ -1,5 +1,7 @@
 package Logic;
 
+import Graphics.GUIPowerUp;
+
 /** 
  * Clase que representa los PowerUps del tipo Masacrality.
  */
@@ -8,8 +10,9 @@ public class Masacrality extends PowerUp
     * Constructor del PowerUp del tio Masacrality.
     * @param g Juego en el que esta el PowerUp.
     */
-    public Masacrality(Game g,int x,int y)
+    public Masacrality(Game g,Level l,int x,int y)
     {game=g;
+     guiPowerUp=new GUIPowerUp(l.getGUILevel());
      guiPowerUp.insertMasacrality(x, y);
     }
     

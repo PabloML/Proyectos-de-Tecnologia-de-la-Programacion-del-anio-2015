@@ -5,7 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logic.*;
+
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -19,21 +25,8 @@ public class GUILevel extends JFrame
   {protected JPanel level;
    protected JLabel passableCells;
    protected JLabel [][] cells;
-   /**
-	* Launch the application.
-    */
-   public static void main(String[] args) 
-     {EventQueue.invokeLater(new Runnable() 
-        {public void run() 
-           {try {GUILevel frame = new GUILevel();
-				 frame.setVisible(true);				 
-				} catch (Exception e) 
-                    {e.printStackTrace();
-				    }
-		   }
-		});
-	 }
-  
+   protected Player player;
+   
    /**
     * Inicializa la matriz de los muros destruibles.
     */
@@ -47,7 +40,7 @@ public class GUILevel extends JFrame
    /**
 	* Create the frame.
 	*/
-   public GUILevel() 
+   public GUILevel(Player p) 
 	 {// Creo la ventana del nivel.
 	  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  setBounds(100, 100, 1024, 768);
@@ -61,6 +54,16 @@ public class GUILevel extends JFrame
 	  //Crea e inicializa la matriz de las celdas.
 	  cells=new JLabel[15][11];
 	  this.initializeCells();
+	  
+	  //Inicializo la grafica del jugador.
+	  player=p;
+	  player.initGUIPlayer(this);
+	  
+	  level.addKeyListener(new KeyAdapter() 
+	    {public void keyReleased(KeyEvent e) 
+	       {player.keyPressed(e);
+		   }
+		});
 	 }
    
    /**

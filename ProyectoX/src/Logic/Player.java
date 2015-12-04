@@ -1,6 +1,7 @@
 package Logic;
 
 import java.awt.event.KeyEvent;
+
 import java.util.LinkedList;
 
 import Graphics.*;
@@ -61,7 +62,7 @@ public abstract class Player
    /**
     * Checkea si a la posición en la que esta el jugador hay algun enemigo y mata al jugador.
     */
-   protected void checkedEnemies()
+ /*  protected void checkedEnemies()
      {Level level=game.getLevel();       
 	  Enemy [] enemies=level.getEnemies();
 	  for (int i=0;i<enemies.length;i++)
@@ -70,7 +71,7 @@ public abstract class Player
 	            {life=false;
 	             guiPlayer.kill(score);
 	            }
-     }
+     }*/
    
    protected void checkedPowerUp()
      {Level level=game.getLevel();
@@ -139,6 +140,22 @@ public abstract class Player
       }
     
     /**
+     * Setea el juego en el que estara el jugador.
+     * @param g Juego en el que estara el jugador.
+     */
+    public void setGame(Game g)
+      {game=g;    	
+      }
+
+    /**
+     * Inicializa la grafica del jugador con la grafica del nivel dada por parametro.
+     * @param l Grafica del nivel donde estara el jugador.
+     */
+    public void initGUIPlayer(GUILevel l)
+      {guiPlayer= new GUIPlayer(l,this);
+      }
+    
+    /**
      * Devuelve si el jugador esta vivo.
      * @return Verdadero si el jugador esta vivo, falso en caso contrario.
      */
@@ -189,32 +206,35 @@ public abstract class Player
       {speed=s;    	
       }
     
-    public void keyPressed(KeyEvent e) 
+    /**
+     * Caprutra el evento de presionar las teclas de movimiento y ataque del jugador.
+     * @param e El evento que quiero capturar.
+     */
+	public void keyPressed(KeyEvent e)
       {int key = e.getKeyCode();
        switch (key)
-         {case KeyEvent.VK_DOWN:{this.move(1);
+         {case KeyEvent.VK_DOWN: this.move(1);
                                  break;
-                                }
-          case KeyEvent.VK_UP:{this.move(2);
+                             
+          case KeyEvent.VK_UP: this.move(2);
                                break;
-                              }
-          case KeyEvent.VK_RIGHT:{this.move(3);
+                           
+          case KeyEvent.VK_RIGHT: this.move(3);
                                   break;
-                                 }
-          case KeyEvent.VK_LEFT:{this.move(4);
+                              
+         case KeyEvent.VK_LEFT: this.move(4);
+                                break;
+                             
+         case KeyEvent.VK_SPACE: this.attack();
                                  break;
-                                }
-          case KeyEvent.VK_SPACE:{this.attack();
-                                  break;
-                                 }
-        }
+	    }
       }
     /**
      * Mueve el jugador.
      */
     public void move(int d)
       {this.movePlayer(d);
-       this.checkedEnemies();
+       //this.checkedEnemies();
        this.checkedPowerUp();
       }
     public abstract void attack();

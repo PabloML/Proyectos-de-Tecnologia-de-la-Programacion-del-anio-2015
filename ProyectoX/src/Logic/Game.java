@@ -6,13 +6,13 @@ package Logic;
 public class Game
   {protected Player player;//Jugador del juego.
    protected Level level;//Nivel del juego.
-   protected Time time;//Tiempo del juego.
+   protected Time time;//Tiempo del juego.  
     
    /** 
     * Constructor del juego.
     * @param p Jugador del juego. 
     */
-    public void Game(Player p)
+    public Game(Player p)
       {player=p;
        level=new Level(this);
        time=new Time();

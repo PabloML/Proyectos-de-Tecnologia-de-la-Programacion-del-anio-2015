@@ -36,7 +36,7 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new SpeedUp(game,x,y));
+    		    {cells[x][y].setPowerUp(new SpeedUp(game,this,x,y));
     		     s++;    		     
     		    }
     	    }
@@ -58,7 +58,7 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new Fatality(game,x,y));
+    		    {cells[x][y].setPowerUp(new Fatality(game,this,x,y));
     		     f++;    		     
     		    }
     	    }
@@ -80,7 +80,7 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new Bombality(game,x,y));
+    		    {cells[x][y].setPowerUp(new Bombality(game,this,x,y));
     		     b++;    		     
     		    }
     	    }
@@ -102,7 +102,7 @@ public class Level
     	{if (cells[x][y]!=null && cells[x][y].haveWall() && !cells[x][y].havePowerUp())
     	    {hp=rnd.nextBoolean();
     		 if (hp)
-    		    {cells[x][y].setPowerUp(new Masacrality(game,x,y));
+    		    {cells[x][y].setPowerUp(new Masacrality(game,this,x,y));
     		     m++;    		     
     		    }
     	    }
@@ -134,11 +134,11 @@ public class Level
       for (int i=0;i<15;i++)
 	    {cells[i][0]=null;
 	     guiLevel.insertlimitCell(i,0);
-	     cells[10][i]=null;
-	     guiLevel.insertlimitCell(10,i);
+	     cells[i][10]=null;
+	     guiLevel.insertlimitCell(i,10);
 	    }
       for (int i=2;i<13;i++)
-      	for (int j=2;j<9;i++)
+      	for (int j=2;j<9;j++)
           if (i%2==0 && j%2==0)
              {cells[i][j]=null;
               guiLevel.insertImpassableCell(i, j);
@@ -153,18 +153,26 @@ public class Level
       int y=1;
       Random rnd=new Random();
       boolean hw;
-      while (quantityWall<49 && x<13 && y<9)
-        {if (cells[x][y]!=null)
-            {hw=rnd.nextBoolean();
-               if (hw)
-                   if ((!(x==1 && y==1)) || (!(x==1 && y==2)) || (!(x==2 && y==1)))
-                      {cells[x][y].setHaveWall(hw);
-                       quantityWall++;
-                       guiLevel.insertDestructibleWall(x, y);
-                      }              
-            }
+      while (quantityWall<49)
+        {while (x<13)
+           {while (y<9)
+    	      {if (cells[x][y]!=null)
+                  {hw=rnd.nextBoolean();
+                   if (hw)
+                      if ((!(x==1 && y==1)) && (!(x==1 && y==2))&&(!(x==2 && y==1)))
+                         {cells[x][y].setHaveWall(hw);
+                          quantityWall++;
+                          guiLevel.insertDestructibleWall(x, y);
+                         } 
+                  }
+            y++;
+    	   }
          x++;
-         y++;
+        }
+         if (x>12 || y>8)
+            {x=1;
+             y=1;
+            }
         }
      }
  
@@ -182,7 +190,7 @@ public class Level
          cells[i][10]=new Cell(this,i,10);
         }
       for (int i=2;i<14;i++)
-    	for (int j=2;j<10;i++)
+    	for (int j=2;j<10;j++)
           if (i%2!=0 && j%2!=0)
              cells[i][j]=new Cell(this,i,j);
       this.createDetruibleWall();
@@ -196,11 +204,11 @@ public class Level
     public Level(Game g)
       {game=g;
        quantityWall=0;
-       guiLevel = new GUILevel();
+       guiLevel = new GUILevel(game.getPlayer());
        cells=new Cell[15][11];
        this.CreateCells();
        enemies=new Enemy[6];
-       this.CreateEnemies();
+       //this.CreateEnemies();
        guiLevel.setVisible(true);	
       }
     

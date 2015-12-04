@@ -7,6 +7,7 @@ import Graphics.*;
  */
 public abstract class PowerUp extends Thread
   {protected Game game;// Juego en el que esta el PowerUp.
+   protected Level level;//Nivel en el que esta el PpowerUp.
    protected GUIPowerUp guiPowerUp;//Grafica de los powerUps.
      
    /**

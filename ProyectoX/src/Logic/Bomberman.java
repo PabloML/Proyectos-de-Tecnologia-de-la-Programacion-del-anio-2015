@@ -1,5 +1,9 @@
 package Logic;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.LinkedList;
+
 import Graphics.*;
 
 /** 
@@ -15,7 +19,9 @@ public class Bomberman extends Player
    private void initialicePowerUps()
      {int pos=0;
 	  while (pos<powerUps.length)
-		powerUps[pos]=null;
+		{powerUps[pos]=null;
+		 pos++;
+		}
      }
    /**
     * Mueve al jugador en la dirección dada por parámetro.
@@ -60,17 +66,16 @@ public class Bomberman extends Player
     * @param n Nombre del jugador que maneja el Bomberman.
     * @param g Juego en el qeu esta el Bomberman.
     */
-   public void Bomberman(String n, Game g)
+   public Bomberman(String n)
      {name=n;
-      game=g;
       positionX=1;
       positionY=1;
       speed=3;
       life=true;
-      guiPlayer=new GUIPlayer(game.getLevel().getGUILevel());
+      weapons=new LinkedList <Weapon>();
       weapons.addFirst(new Bomb(this));
       powerUps=new PowerUp[4];
-      this.initialicePowerUps();
+      this.initialicePowerUps();      
      }
    /**
     * Devuelve la cantidad de bombas que puede poner al mismo tiempo.
@@ -100,7 +105,7 @@ public class Bomberman extends Player
      */
     public void setCantBombCanPut(int c)
       {cantBombCanPut=c;
-      }
+      }    
     
     /**
      * Mueve el jugador.
@@ -108,7 +113,7 @@ public class Bomberman extends Player
     public void move(int d)
       {if (pass)
           {this.movePlayer(d);
-           this.checkedEnemies();
+           //this.checkedEnemies();
            this.checkedPowerUp();
           }
        else super.move(d);
@@ -119,5 +124,5 @@ public class Bomberman extends Player
           {Bomb bomb=(Bomb)weapons.getFirst();
            bomb.exploit();
           }
-      }
+      }	
   }

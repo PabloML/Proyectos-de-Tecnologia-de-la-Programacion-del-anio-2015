@@ -2,6 +2,8 @@ package Graphics;
 
 import javax.swing.*;
 
+import Logic.*;
+
 public class GUIPlayer
   {protected JLabel [] playerLabels;//Arreglo de las imagenes de los jugadores.
    protected JLabel player;//Imagen actual del jugador.
@@ -56,11 +58,12 @@ public class GUIPlayer
     * Crea la grafica del jugador.
     * @param l Panel del nivel donde va estar el jugador.
     */
-   public GUIPlayer(GUILevel l)
+   public GUIPlayer(GUILevel l,Player p)
 	 {guiLevel=l;
 	  level=guiLevel.getLevel();
 	  this.createPlayer();
 	  this.insertPlayer();
+        
 	 }
    
    public void move(int d,int s,boolean c)

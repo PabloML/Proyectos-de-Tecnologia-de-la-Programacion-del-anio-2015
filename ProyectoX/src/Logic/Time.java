@@ -24,19 +24,20 @@ public class Time
     /** */
     public int getSecond()
     {
+		return second;
     
     }
     
     /** */
     public int getMinute()
     {
-    
+     return minute;
     }
     
     /** */
     public int getHour()
     {
-    
+     return hour;
     }
     
     /** */
